@@ -1,0 +1,1356 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
+  "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html>
+
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+  <link rel="shortcut icon" href="http://bxslider.com/sites/default/files/favicon_0.ico" type="image/vnd.microsoft.icon" />
+
+<style>
+
+
+@font-face {
+    font-family: 'MuseoSans';
+    src: url('../fonts/MuseoSans_500-webfont.eot');
+    src: url('../fonts/MuseoSans_500-webfont.eot?iefix') format('eot'),
+         url('../fonts/MuseoSans_500-webfont.woff') format('woff'),
+         url('../fonts/MuseoSans_500-webfont.ttf') format('truetype'),
+         url('../fonts/MuseoSans_500-webfont.svg#webfontkQkWxTED') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BebasReg';
+    src: url('../fonts/bebas-webfont.eot');
+    src: url('../fonts/bebas-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/bebas-webfont.woff') format('woff'),
+         url('../fonts/bebas-webfont.ttf') format('truetype'),
+         url('../fonts/bebas-webfont.svg#BebasRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#skip-link {
+	display: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+.clear {
+	clear: both;
+}
+
+#right a:hover {
+	text-decoration: underline;
+}
+
+.btn {
+	background: #838383;
+	color: #f1eee7;
+	border-radius: 3px;
+	padding: 5px 10px;
+}
+
+/* MAIN CONTENT ------------------------------------------------ */
+
+#main-content {
+	width: 650px;
+	float: left;
+	padding-right: 20px;
+	border-right: dotted #c3c3c1 1px;
+}
+
+#main-content ul {
+	margin: 15px 0;
+}
+
+#main-content h3 {
+	font-size: 22px;
+	margin: 15px 0;
+	word-spacing: 4px;
+}
+
+.front #main-content li {
+	font-size: 16px;
+	list-style: disc;
+	margin-left: 18px;
+	margin-bottom: 5px;
+}
+
+.front #main-content a {
+	color: #de312a;
+}
+
+.front #main-content a:hover {
+	text-decoration: underline;
+}
+
+.front #main-content p {
+	font-size: 16px;
+	margin-bottom: 20px;
+}
+
+.front .demo-wrap {
+	border-top: dotted #c3c3c1 1px;
+	border-bottom: dotted #c3c3c1 1px;
+}
+
+.front #main-content .demo-wrap li {
+	list-style: none;
+}
+
+.not-front .demo-wrap {
+	margin-bottom: 20px;
+}
+
+/* EXAMPLES ------------------------------------------------ */
+
+.demo-wrap ul {
+	width: 545px;
+	height: 195px;
+	overflow: hidden;
+}
+
+.demo-wrap li {
+	list-style: none;
+	margin: 0;
+	height: 213px;
+}
+
+/*notes tips*/
+#block-block-5 {
+	border-top: dotted #c3c3c1 1px;
+	margin-top: 20px;
+	padding-top: 15px;
+}
+
+#block-block-5 li {
+	list-style: disc;
+	margin-left: 16px;
+	margin-bottom: 5px;
+}
+
+.not-front .node-content {
+	border-bottom: dotted #c3c3c1 1px;
+	margin-bottom:  20px;
+	padding-bottom: 10px;
+}
+
+.demo-wrap.border {
+	border-top: dotted #c3c3c1 1px;
+	padding-top: 15px;
+}
+
+.demo-wrap.border .bx-window {
+	margin-top: 78px;
+}
+
+.demo-wrap .left {
+	width: 205px;
+	float: left;
+}
+
+.demo-wrap .right {
+	width: 320px;
+	float: left;
+}
+
+.demo-wrap .right .album {
+	margin-top: 60px;
+	font-size: 16px;
+}
+
+.demo-wrap .right .band {
+	font-size: 14px;
+	color: #838383;
+}
+
+.demo-wrap .multiple li {
+	width: 190px;
+}
+
+.demo-wrap .bx-wrapper {
+	margin: 0 auto;
+}
+
+.demo-wrap .bx-prev {
+	position: absolute;
+	top: 78px;
+	left: -55px;
+	width: 31px;
+	height: 31px;
+	text-indent: -999999px;
+	background: url(images/green_prev.png) no-repeat 0 -30px;
+}
+
+.demo-wrap .bx-next {
+	position: absolute;
+	top: 78px;
+	right: -40px;
+	width: 31px;
+	height: 31px;
+	text-indent: -999999px;
+	background: url(images/green_next.png) no-repeat 0 -30px;
+}
+
+.demo-wrap .bx-next:hover,
+.demo-wrap .bx-prev:hover {
+	background-position: 0 0;
+}
+
+.field .field-label {
+	font-size: 14px;
+	color: #838383;
+	font-weight: normal;
+	margin-bottom: 5px;
+}
+
+/*start / stop*/
+.bx-auto {
+	text-align: center;	
+}
+
+.bx-start {
+	color: #f1eee7;
+	font-size: 14px;
+	background: #838383;
+	padding: 4px 7px;
+	border-radius: 3px;
+	text-transform: capitalize;
+}
+
+.bx-start:hover {
+	background: #525044;
+	text-decoration: none;
+}
+
+/*pager*/
+
+.pager-block{
+	text-align: center;
+}
+
+.pager-block a {
+	font-size: 16px;
+	color: #838383;
+	padding: 0 10px;
+}
+
+.pager-block .pager-active,
+.pager-block a:hover {
+	color: #de312a;
+	text-decoration: none;
+}
+
+/*custom field*/
+.field-name-field-custom {
+	border-top: dotted #c3c3c1 1px;
+	border-bottom: dotted #c3c3c1 1px;
+	padding:  10px 0;
+	margin-bottom: 20px;
+}
+
+.page-node-17 .field-name-field-custom {
+	border: 0;	
+}
+
+.field-name-field-custom p {
+	font-size: 16px;
+	margin-bottom: 15px;
+}
+
+.field-name-field-custom p.check {
+	padding-left: 25px;
+	background: url(../images/icon_check.png) no-repeat 0 2px;
+}
+
+.field-name-field-custom p a {
+	color: #de312a;
+}
+
+.field-name-field-custom p a:hover {
+	text-decoration: underline;
+}
+
+/*jq block*/
+#main-content .field-name-field-jq-code ul {
+	margin-top: 5px;
+}
+
+.field-name-field-jq-code li {
+	list-style: disc;
+	margin-left: 16px;
+	margin-bottom: 3px;
+}
+
+#my-start-stop {
+	margin-bottom: 5px;
+}
+
+/*captions*/
+.demo-wrap ul.captions {
+	position: relative;
+}
+
+.demo-wrap ul.captions,
+.demo-wrap ul.captions li {
+	height: 195px;
+}
+
+.bx-captions {
+	text-align: center;
+	margin-left: -22px;
+}
+
+/*thumbnails*/
+.thumbs {
+	text-align: center;
+}
+
+.thumbs a {
+	padding: 0 5px;
+}
+
+.thumbs a.pager-active,
+.build-pager a.pager-active {
+	border-bottom: solid #de312a 2px;
+}
+
+.thumbs a img {
+	border: solid #cdcdcd 1px;
+}
+
+/* OPTIONS ------------------------------------------------ */
+
+.view-options .views-field-title {
+	font-size: 14px;
+	margin-bottom: 5px;
+}
+
+.view-options .views-field-field-desc {
+	font-size: 12px;
+	color: #838383;
+	margin-bottom: 10px;
+}
+
+#main-content .view-options .view-content h3 {
+	font-size: 16px;
+	border-top: dotted #c3c3c1 1px;
+	padding-top: 15px;
+	position: relative;
+}
+
+#main-content .view-options .view-content h3:first-child {
+	border: 0;
+	padding-top: 0;
+}
+
+#main-content .view-options .view-content h3 a {
+	font-family: MuseoSans;
+	position: absolute;
+	top: 20px;
+	right: 0;
+	font-size: 12px;
+	color: #de312a;
+}
+
+#main-content .view-options .view-content h3 a:hover {
+	text-decoration: underline;
+}
+
+.block-taxonomy-block li {
+	margin-bottom: 5px;
+}
+
+.block-taxonomy-block li a {
+	font-size: 16px;
+	color: #de312a;
+}
+
+.block-taxonomy-block li a:hover {
+	text-decoration: underline;
+}
+
+/* RIGHT ------------------------------------------------ */
+
+#right {
+	width: 270px;
+	float: right;
+}
+
+#right .btn {
+	display: block;
+	font: 35px BebasReg;
+	margin: 20px 0;
+	padding: 3px 0 7px;
+}
+
+#right .btn.download {
+	background: #de312a url(../images/icon_arrow_down.png) no-repeat 16px 11px;
+	padding-left: 70px;
+}
+
+#right .btn.donate {
+	background: #838383 url(../images/icon_beer.png) no-repeat 19px 11px;
+	padding-left: 70px;
+	word-spacing: 5px;
+}
+
+#right #donate-form {
+	display: none;
+}
+
+/*donate block*/
+#right #block-block-2 {
+	border-bottom: dotted #c3c3c1 1px;
+	margin-bottom: 20px;
+}
+
+/*github block*/
+#right #block-block-3 {
+	padding-bottom: 10px;	
+	margin-bottom: 20px;
+	border-bottom: dotted #c3c3c1 1px;
+}
+
+#right #block-block-3 p {
+	font-size: 14px;
+	color: #838383;
+	margin-bottom: 10px;
+}
+
+/*bxcreative block*/
+#right #block-block-4 p {
+	font-size: 14px;
+	color: #838383;
+	margin-bottom: 10px;
+}
+
+#right #block-block-4 a {
+	color: #de312a;
+	display: block;
+}
+
+#right #block-block-4 a:hover {
+	text-decoration: none;
+}
+
+#right #block-block-4 a:hover h4 {
+	text-decoration: underline;
+}
+
+#right #block-block-4 h3 {
+	margin-top: -21px;
+}
+
+#right #block-block-4 h3 {
+	color: #de312a;
+	font-size: 50px;
+}
+
+#right #block-block-4 h3 span {
+	font-size: 60px;
+}
+
+#right #block-block-4 h4 {
+	margin-top: -6px;
+}
+
+#right #block-block-4 a h4 {
+	font-size: 17px;
+	word-spacing: 4px;
+}
+
+/*advertisements*/
+#block-block-6 {
+	padding-bottom: 20px;	
+	margin-bottom: 20px;
+	border-bottom: dotted #c3c3c1 1px;
+}
+
+/*wrapper*/
+#block-block-6 .one .bsa_it_ad {
+	background: #fff none;
+	margin-bottom: 5px;
+}
+
+#block-block-6 .one .bsa_it_ad .bsa_it_i {
+	float: none;
+}
+
+#block-block-6 img {
+	margin-bottom: 5px;
+}
+
+/*header*/
+#block-block-6 .one .bsa_it_ad .bsa_it_t {
+	font-family: MuseoSans;
+	color: #525044;
+	padding-bottom: 0;
+}
+
+/*message*/
+#block-block-6 .one .bsa_it_ad .bsa_it_d {
+	color: #838383;
+	font-family: MuseoSans;
+}
+
+#right .one .bsa_it_p {
+	display:none;
+}
+
+#right .yoggrt-link {
+	color: #838383;
+	padding-top: 5px;
+}
+
+/* FOOTER ------------------------------------------------ */
+
+#footer {
+	background: #d7d4ce;
+	padding-top: 30px;
+	word-spacing: 3px;
+}
+
+#footer .inner {
+	width: 960px;
+	margin: 0 auto;
+	padding-bottom: 80px;
+}
+
+#footer h6 {
+	color: #de312a;
+	font-size: 20px;
+}
+
+#footer h6 a {
+	color: #de312a;
+	font-size: 20px;
+}
+
+#footer h6 span {
+	font-size: 24px;
+}
+
+#footer a:hover {
+	text-decoration: underline;
+}
+
+/* MESSAGES ------------------------------------------------ */
+
+div.messages {
+  background-position: 8px 8px; /* LTR */
+  background-repeat: no-repeat;
+  border: 1px solid;
+  margin: 6px 0;
+  padding: 10px 10px 10px 50px; /* LTR */
+  font-size: 14px;
+}
+
+div.status {
+  background-image: url(../images/message-24-ok.png);
+  border-color: #be7;
+}
+div.status,
+.ok {
+  color: #234600;
+}
+div.status,
+table tr.ok {
+  background-color: #f8fff0;
+}
+
+div.warning {
+  background-image: url(../.images/message-24-warning.png);
+  border-color: #ed5;
+}
+div.warning,
+.warning {
+  color: #840;
+}
+div.warning,
+table tr.warning {
+  background-color: #fffce5;
+}
+
+div.error {
+  background-image: url(../images/message-24-error.png);
+  border-color: #ed541d;
+}
+div.error,
+.error {
+  color: #8c2e0b;
+}
+div.error,
+table tr.error {
+  background-color: #fef5f1;
+}
+div.error p.error {
+  color: #333;
+}
+
+div.messages ul {
+  margin: 0 0 0 1em; /* LTR */
+  padding: 0;
+}
+div.messages ul li {
+  list-style-image: none;
+}
+
+.element-invisible {
+	display: none;
+}
+
+/* TABS ------------------------------------------------ */
+
+.tabs {
+	height: 20px;
+	padding: 10px 0;
+}
+
+.tabs li {
+	float: left;
+	margin-right: 10px;
+}
+
+.tabs a {
+	background: #eee;
+	display: block;
+	color: #666;
+	padding:  3px 5px;
+	border:  solid #ccc 1px;
+}
+
+.tabs a:hover {
+	background: #e5e5e5;
+}
+
+/* FORMS ------------------------------------------------ */
+
+.form-text {
+	display: block;
+	background: #fff;
+	padding:  3px 5px;
+	margin-bottom: 5px;
+}
+
+label {
+	margin-bottom: 4px;
+	display: block;
+	font-size: 14px;
+}
+
+label span {
+	color: #f00;
+}
+
+.form-item {
+	margin-bottom: 15px;
+}
+
+.form-submit {
+	color: #f1eee7;
+	font-size: 14px;
+	background: #838383;
+	padding: 4px 7px;
+	border-radius: 3px;
+	text-transform: capitalize;
+	cursor: pointer;
+}
+
+.form-submit:hover {
+	background: #525044;
+	text-decoration: none;
+}
+
+.description {
+	color: #838383;
+}
+
+.field .field-label {
+    font-weight: bold;
+}
+.field-label-inline .field-label, .field-label-inline .field-items {
+    float: left;
+}
+form .field-multiple-table {
+    margin: 0;
+}
+form .field-multiple-table th.field-label {
+    padding-left: 0;
+}
+form .field-multiple-table td.field-multiple-drag {
+    padding-right: 0;
+    width: 30px;
+}
+form .field-multiple-table td.field-multiple-drag a.tabledrag-handle {
+    padding-right: 0.5em;
+}
+form .field-add-more-submit {
+    margin: 0.5em 0 0;
+}
+
+.views-exposed-form .views-exposed-widget {
+    float: left;
+    padding: 0.5em 1em 0 0;
+}
+.views-exposed-form .views-exposed-widget .form-submit {
+    margin-top: 1.6em;
+}
+.views-exposed-form .form-item, .views-exposed-form .form-submit {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.views-exposed-form label {
+    font-weight: bold;
+}
+.views-exposed-widgets {
+    margin-bottom: 0.5em;
+}
+.views-align-left {
+    text-align: left;
+}
+.views-align-right {
+    text-align: right;
+}
+.views-align-center {
+    text-align: center;
+}
+.views-view-grid tbody {
+    border-top: medium none;
+}
+.view .progress-disabled {
+    float: none;
+}
+
+
+</style>
+<!--[if IE]>
+<style type="text/css" media="all">@import url("http://bxslider.com/sites/all/themes/bx/css/ie.css?m7gz64");</style>
+<![endif]-->
+  <script type="text/javascript" src="http://bxslider.com/sites/default/files/js/js_OUYbOVdgpVsXOdB2zFglWtxDbaBrvQlNhLOq45JrbmE.js"></script>
+<script type="text/javascript" src="http://bxslider.com/sites/default/files/js/js_0xSOf1oN6BsJgLtVvcyShl4BsQ4So6JMSkF4OVIYLYQ.js"></script>
+<script type="text/javascript" src="http://bxslider.com/sites/default/files/js/js_IDBX5SzkJ9gGNq7x-qOE_2DZsexqguTJQGMKvi4w-Uw.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var _gaq = _gaq || [];_gaq.push(["_setAccount", "UA-24972830-2"]);_gaq.push(["_trackPageview"]);(function() {var ga = document.createElement("script");ga.type = "text/javascript";ga.async = true;ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(ga, s);})();
+//--><!]]>
+</script>
+<script type="text/javascript" src="http://bxslider.com/sites/default/files/js/js_-TJoLLzY5Z1EMn_MH_5zmnPnJswkRm2pb-vR7AOwEbM.js"></script>
+<script type="text/javascript" src="http://bxslider.com/sites/default/files/js/js_AHyBAYZMC0aoLby7IhzDcekyKo2__10bztcN6PSiv_g.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"bx","theme_token":"_qYYUP79hdYOzJtQ2142jiGwBHBMlfBhMs1t5VE33mo","js":{"misc\/jquery.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/google_analytics_reports\/google_analytics_reports\/google_analytics_reports.js":1,"sites\/all\/modules\/google_analytics\/googleanalytics.js":1,"0":1,"sites\/all\/themes\/bx\/js\/jquery.scrollTo-1.4.2-min.js":1,"sites\/all\/themes\/bx\/js\/jquery.easing.1.3.js":1,"sites\/all\/themes\/bx\/js\/jquery.bxSlider.min.js":1,"sites\/all\/themes\/bx\/js\/bx.js":1,"sites\/all\/modules\/views\/js\/jquery.ui.dialog.patch.js":1},"css":{"modules\/field\/theme\/field.css":1,"sites\/all\/modules\/google_analytics_reports\/google_analytics_reports\/google_analytics_reports.css":1,"sites\/all\/modules\/views\/css\/views.css":1,"sites\/all\/modules\/codefilter\/codefilter.css":1,"sites\/all\/modules\/ctools\/css\/ctools.css":1,"sites\/all\/themes\/bx\/css\/reset.css":1,"sites\/all\/themes\/bx\/css\/bx.css":1,"sites\/all\/themes\/bx\/css\/ie.css":1}},"googleanalytics":{"trackOutbound":1,"trackMailto":1,"trackDownload":1,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls|xml|z|zip"}});
+//--><!]]>
+</script>
+</head>
+<body class="html not-front not-logged-in one-sidebar sidebar-second page-node page-node- page-node-14 node-type-example bx" >
+  <div id="skip-link">
+    <a href="#main-content" class="element-invisible element-focusable">Skip to main content</a>
+  </div>
+    <script type="text/javascript">
+(function(){
+  var bsa = document.createElement('script');
+     bsa.type = 'text/javascript';
+     bsa.async = true;
+     bsa.src = '//s3.buysellads.com/ac/bsa.js';
+  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+})();
+</script>
+
+<div id="page"><div id="page-inner">
+	      
+  <div id="main-content" class="clearfix">
+      <div id="content">  <div class="region region-content">
+    
+<div class='block-system block-page-content clearfix'  id="block-system-main">
+  
+  
+  
+  
+      <div  class="block-content clearfix">
+<div class='node node-example node-promoted clearfix'  about="/examples/vertical-slideshow" typeof="sioc:Item foaf:Document" id="node-14">
+  
+  
+      <div class='node-content clearfix '>
+      <div class="field field-name-body field-type-text-with-summary field-label-hidden prose"><div class="field-items"><div class="field-item even" property="content:encoded"><script type="text/javascript">
+(function($){	
+  $(function(){
+    $('#slider1').bxSlider({
+      mode: 'vertical',
+      pager: true,	  
+	  pagerLocation: 'bottom',
+	  displaySlideQty: 3,
+	  moveSlideQty: 3,
+	  pagerSelector: 'div.pager-block',
+	  infiniteLoop: false,
+	  controls: false
+    });
+  });	
+}(jQuery))
+</script>
+
+<div class="demo-wrap">
+<div class="pager-block"></div>
+<ul id="slider1">
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 1</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 2</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 3</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 4</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 5</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 1</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 2</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 3</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 4</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 5</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 1</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 2</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 3</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 4</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 5</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 1</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 2</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 3</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 4</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 5</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 1</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 2</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 3</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 4</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 5</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 1</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 2</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 3</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 4</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 5</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 1</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 2</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 3</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 4</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 5</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 1</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 2</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 3</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 4</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 5</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 1</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 2</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 3</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 4</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 5</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 1</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 2</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 3</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 4</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 5</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 1</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 2</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 3</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 4</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 5</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 1</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 2</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 3</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 4</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+  <li>
+		<div class="left">
+		  <img src="pic_velvet1.jpg" width="169" height="169" />
+		</div>
+		<div class="right">
+		  <div class="album">The Velvet Underground &amp; Nico 5</div>
+		  <div class="band">The Velvet Underground</div>
+		</div>
+  </li>
+</ul>
+<div class="pager-block"></div>
+</div>
+</div></div></div>
+
+</div>
+  
+  </div>
+
+</div>
+  
+  </div>
+
+  </div>
+</div>
+  </div>
+
+  </body>
+</html>
