@@ -10,11 +10,27 @@
 			<label for="page_title">Заголовок:&nbsp;&nbsp;</label> <input type="text" id="page_title" />   
 		</div>
 		<div class="form_field">
-			<label for="page_keywords">Ключевые слова (keywords):&nbsp;&nbsp;</label> <input type="text" id="page_keywords" />   
+			<label for="page_meta_keywords">Ключевые слова (keywords):&nbsp;&nbsp;</label> <input type="text" id="page_meta_keywords" />   
 		</div>
 		<div class="form_field">
-			<label for="page_description">Описание (description):&nbsp;&nbsp;</label> <input type="text" id="page_description" />   
+			<label for="page_meta_description">Описание (description):&nbsp;&nbsp;</label> <input type="text" id="page_meta_description" />   
 		</div>    
+		<div class="form_field">
+			<label for="page_category_id">Категория:&nbsp;&nbsp;</label> 
+			<select id="page_category_id">				
+				<option value="0">Спрятать</option>
+				<option value="1">Статические</option>
+				<option value="2">Каталог</option>
+				<option value="3">Новости</option>
+				<option value="4">К прочтению</option>				
+			</select>
+		</div>
+		<div class="form_field" id="page_description_block">
+			<label for="page_description">Краткое содержание:&nbsp;&nbsp;</label> <input type="text" id="page_description" />   
+		</div>
+		<div class="form_field" id="page_created_date_block">
+			<label for="page_created_date">Дата:&nbsp;&nbsp;</label> <input type="text" id="page_created_date" />   
+		</div>
 		<div class="form_field">
 			<textarea class="ckeditor" name="page_content" id="page_content"></textarea>
 		</div>

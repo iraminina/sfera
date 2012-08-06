@@ -5,12 +5,20 @@
 	categoriesImagesData: null,
 	
 	init: function() {
+		$.datepicker.setDefaults({
+			showOn: 'both',
+			buttonImageOnly: true,
+			buttonImage: '../admin/images/calendar.png',
+			buttonText: 'Calendar',
+			dateFormat: "dd-mm-yy",
+			monthNames: ["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"]		   
+		});
 		$( "#tabs" ).tabs({ select: function(){ 
 			$("#settings_message").html("");
 		}});
 		this.initData();		
 		this.initCategoriesImagesData();		
-		this.initDOM();
+		this.initDOM();		
 	},
 	
 	initData: function() {
@@ -49,8 +57,11 @@
 								page_title: escape($("#page_title").val()),
 								page_content: escape(CKEDITOR.instances['page_content'].getData()),		
 								page_url: escape($("#page_url").val()),								
+								page_meta_description: escape($("#page_meta_description").val()),
 								page_description: escape($("#page_description").val()),
-								page_keywords: escape($("#page_keywords").val()) }				  
+								page_category_id: escape($("#page_category_id").val()),
+								page_created_date: escape($("#page_created_date").val()),
+								page_meta_keywords: escape($("#page_meta_keywords").val()) }				  
 					})
 					.done(function ( data ) {
 						$("p#page_success, p#page_error").html('');
@@ -250,8 +261,11 @@
 			$("#page_title").val(unescape($.sfera_admin.pagesData[page_id].title));
 			CKEDITOR.instances['page_content'].setData(unescape($.sfera_admin.pagesData[page_id].content));
 			$("#page_url").val(unescape($.sfera_admin.pagesData[page_id].url));
-			$("#page_description").val(unescape($.sfera_admin.pagesData[page_id].meta_description));
-			$("#page_keywords").val(unescape($.sfera_admin.pagesData[page_id].meta_keywords));
+			$("#page_description").val(unescape($.sfera_admin.pagesData[page_id].page_description));
+			$("#page_meta_description").val(unescape($.sfera_admin.pagesData[page_id].meta_description));
+			$("#page_meta_keywords").val(unescape($.sfera_admin.pagesData[page_id].meta_keywords));
+			$("#page_category_id").val(unescape($.sfera_admin.pagesData[page_id].page_category_id));
+			$("#page_created_date").val($.datepicker.formatDate('dd-mm-yy', new Date(unescape($.sfera_admin.pagesData[page_id].created_date)))).datepicker();
 			$( "#edit_page" ).dialog( "open" );
 			return false;
 		});	
@@ -274,8 +288,9 @@
 		
 		$( "#new_page" ).click(function() {
 			$("p#page_success, p#page_error").html('');
-			$("#page_id").val(0);
-			$("#page_title, #page_url, #page_description, #page_keywords").val('');
+			$("#page_id, #page_category_id").val(0);
+			$("#page_title, #page_url, #page_description, #page_meta_description, #page_meta_keywords, #page_created_date").val('');
+			$("#page_created_date").datepicker();
 			CKEDITOR.instances['page_content'].setData('');			
 			$( "#edit_page" ).dialog( "open" );
 			return false;
@@ -399,8 +414,17 @@
 	
 	drawPages: function() {
 		var html = '';
-		var count = 0;		
+		var count = 0;
+		var category = '';
+				
 		$.each($.sfera_admin.pagesData, function(key, page) {
+			switch(parseInt(page.page_category_id)) {
+				case 1: category = 'Статические'; break;
+				case 2: category = 'Каталог'; break;
+				case 3: category = 'Новости'; break;
+				case 4: category = 'К прочтению'; break;				
+				default: category = 'Спрятано'; break;
+			}
 			html += '<tr>' +
 						'<td>' +
 							'<a href="#" class="blue edit_page" rel="' + unescape(page.id) + '">Редактировать</a>' +
@@ -410,10 +434,11 @@
 						'<td width="50" align="center">' + unescape(page.id) + '</td>' +
 						'<td width="300">' + unescape(page.title) + '</td>' +
 						'<td width="200"><a target="_blank" href="/' + unescape(page.url) + '">' + unescape(page.url) + '</a></td>' +
+						'<td width="200" align="center">' + category + '</td>' +
 					'</tr>';
 			count++;
 		});
-		html += '<tr><td colspan="4">Найдено страниц: <b>' + count + '</b></td></tr>';
+		html += '<tr><td colspan="5">Найдено страниц: <b>' + count + '</b></td></tr>';
 		$("#pages_tbl").html(html);
 	},
 	

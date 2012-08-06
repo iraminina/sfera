@@ -169,3 +169,17 @@ form#save_settings_form > div p {
 form#save_settings_form > div {
 	padding: 10px;
 }
+
+div#edit_page {
+	overflow: hidden;
+}
+
+div#edit_page div#page_created_date_block input {
+	width: 100px;
+}
+
+div#edit_page div#page_created_date_block img {
+	margin-left: 5px;
+    margin-top: 1px;
+    vertical-align: top;
+}

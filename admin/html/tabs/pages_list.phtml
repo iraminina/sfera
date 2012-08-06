@@ -1,6 +1,21 @@
 <button id="new_page">Добавить страницу</button>
 <p>Статические страницы сайта:</p>
 <table class="pages">
-	<thead><th>&nbsp;</th><th>#</th><th>Заголовок</th><th>URL</th></thead>
+	<thead>
+		<th>&nbsp;</th>
+		<th>#</th>
+		<th>Заголовок</th>
+		<th>URL</th>
+		<th width="200">Категория:&nbsp;
+			<select id="filter_page_category_id">
+				<option value="-1">Показать все</option>
+				<option value="0">Спрятанные</option>
+				<option value="1" selected>Статические</option>
+				<option value="2">Каталог</option>
+				<option value="3">Новости</option>
+				<option value="4">К прочтению</option>				
+			</select>
+		</th>
+	</thead>
 	<tbody id="pages_tbl"></tbody>
 </table>

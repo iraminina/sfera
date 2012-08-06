@@ -12,16 +12,21 @@ class common {
 		$res = mysql_query($query, $con);		
 		if(mysql_num_rows($res)>0)  return array('result' => false, 'error' => 'NOT_UNIQUE_URL');
 		
+		$created_date = date("Y-m-d", strtotime($this->convertString($params['created_date'])));
+		
 		if(intval($params['page_id'])==0)
-			$query = "INSERT INTO page(title, content, meta_keywords, meta_description, url) 
-					  VALUES('{$params['page_title']}', '{$params['page_content']}', '{$params['page_keywords']}', '{$params['page_description']}', '{$params['page_url']}')";
+			$query = "INSERT INTO page(title, content, page_description, meta_keywords, meta_description, url, page_category_id, created_date) 
+					  VALUES('{$params['page_title']}', '{$params['page_content']}', '{$params['page_description']}', '{$params['page_meta_keywords']}', '{$params['page_meta_description']}', '{$params['page_url']}', {$params['page_category_id']}, '{$created_date}')";
 		else
 			$query = "UPDATE page
 					  SET title='{$params['page_title']}',
 						content='{$params['page_content']}', 
-						meta_keywords='{$params['page_keywords']}',
-						meta_description='{$params['page_description']}',
-						url='{$params['page_url']}'
+						page_description='{$params['page_description']}',
+						meta_keywords='{$params['page_meta_keywords']}',
+						meta_description='{$params['page_meta_description']}',
+						url='{$params['page_url']}',
+						page_category_id={$params['page_category_id']},
+						created_date='{$created_date}'
 					  WHERE id=".intval($params['page_id']);
 		$res = mysql_query($query, $con);
 		return array('result' => true, 'error' => '');

@@ -16,13 +16,16 @@ switch($_REQUEST['action']) {
 		echo json_encode($result);
 	break;
 	
-    case 'save_page':
+    case 'save_page':	
         $data = array(	'page_content' => $_REQUEST['page_content'],
 						'page_title' => $_REQUEST['page_title'],
 						'page_id' => $_REQUEST['page_id'],
 						'page_description' => $_REQUEST['page_description'],
-						'page_keywords' => $_REQUEST['page_keywords'],
-						'page_url' => $_REQUEST['page_url']);
+						'page_meta_description' => $_REQUEST['page_meta_description'],
+						'page_meta_keywords' => $_REQUEST['page_meta_keywords'],
+						'page_url' => $_REQUEST['page_url'],
+						'page_category_id' => $_REQUEST['page_category_id'],
+						'created_date' => ($_REQUEST['page_created_date']=='' ? date("d-m-Y") : $_REQUEST['page_created_date']));
 		$result = $objCommon->savePage($data);		
 		echo json_encode($result);
     break;		
