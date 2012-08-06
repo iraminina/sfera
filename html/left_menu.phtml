@@ -1,0 +1,16 @@
+<h2>Удобные&nbsp;услуги<span>.........................</span></h2>
+<ul class="left_menu_items">
+<?php foreach($menu as $menu_item) { ?>
+<?php if($menu_item['data']->menu_category_id!=2) continue; ?>
+	<li>
+		<a href="/<?php echo $menu_item['data']->url ?>" title="<?php echo $objCommon->convertString($menu_item['data']->name) ?>">
+			<?php echo $objCommon->convertString($menu_item['data']->name) ?>
+		</a>
+	</li>	
+<?php } ?>	
+</ul>
+<?php /* ?>
+<li class="current"><a href="">Доставка и монтаж</a></li>
+<?php */ ?>
+
+<div class="hr"></div>

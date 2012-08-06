@@ -1,0 +1,39 @@
+<?php $cnt=1; ?>
+<?php foreach($menu as $menu_item) { ?>
+<?php if($menu_item['data']->menu_category_id!=1 || $cnt>$config['general_top_menu_count']) continue; ?>
+<div class="menu_item_pic">	
+	<a href="/<?php echo $menu_item['data']->url ?>" title="<?php echo $objCommon->convertString($menu_item['data']->name) ?>">
+		<?php echo ($menu_item['data']->image=='' 
+					? '<img src="../images/clear.gif" width="120" height="75" />' 
+					: '<img src="../images/categories/'.$menu_item['data']->image.'" title="'.$objCommon->convertString($menu_item['data']->name).'" alt="'.$objCommon->convertString($menu_item['data']->name).'"/>');
+		?>
+	</a>	
+	<?php $cnt++; ?>
+</div>
+<?php } ?>
+
+<div class="clearfix"></div>
+
+<?php $cnt=1; ?>
+<?php foreach($menu as $key=>$menu_item) { ?>
+<?php if($menu_item['data']->menu_category_id!=1 || $cnt>$config['general_top_menu_count']) continue; ?>
+<div class="menu_item 
+	<?php echo ($cnt==1 ? 'menu_item_first' : '') ?> 
+	<?php echo ($cnt==$config['general_top_menu_count'] ? 'menu_item_last' : '') ?>"> 
+	<a href="/<?php echo $menu_item['data']->url ?>" title="<?php echo $objCommon->convertString($menu_item['data']->name) ?>"><?php echo $objCommon->convertString($menu_item['data']->name) ?></a>	
+	<?php $cnt++; ?>
+</div>
+<?php } ?>
+
+<?php /* ?>
+<div class="menu_item menu_item_first menu_itsem_active_first">	
+	<a href="">Мебель для руководителя</a>	
+</div>
+<div class="menu_item menu_item_active_prev">	
+	<a href="">Мебель для приемной</a>	
+</div>
+<div class="menu_item menu_item_active">	
+	<a href="">Кресла и стулья для офиса</a>	
+</div>
+<?php */ ?>
+<div class="clearfix"></div>

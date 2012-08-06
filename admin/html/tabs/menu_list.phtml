@@ -1,0 +1,20 @@
+<button id="new_menu">Добавить пункт меню</button>	
+<p>Меню сайта:</p>		
+<table class="menu">
+	<thead>					
+		<th width="70">&nbsp;</th>
+		<th width="50">#</th>
+		<th width="200">Название</th>
+		<th width="70">Порядок</th>
+		<th width="200">Родитель</th>
+		<th width="200">URL</th>
+		<th width="200">Категория:&nbsp;
+			<select id="filter_category_id">
+				<option value="-1" selected>Показать все</option>
+				<option value="0">Спрятанные</option>
+				<option value="1">Верхнее меню</option>
+				<option value="2">Меню слева</option>
+			</select>
+		</th></thead>
+	<tbody id="menu_tbl"></tbody>
+</table>

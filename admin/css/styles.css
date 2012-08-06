@@ -1,0 +1,171 @@
+* {
+    font: 11px Tahoma,Arial,Verdana,sans-serif;
+}
+
+body {
+    color: #333333;
+    font: 11px Tahoma,Arial,Verdana,sans-serif;
+    margin: 0;
+    padding: 0;    
+}
+
+.blue { color: #2160A6 !important; }
+.green { color: #3D9327 !important; }
+.red { color: #FF0000 !important; }
+.bg_grey { background: #DEDEDE; }
+
+.fleft { float: left; }
+.fright { float: right; }
+
+.clearfix {
+	clear: both;
+	content: ".";
+	display: block;
+	height: 0;
+	visibility: hidden;
+	font-size: 0;
+}
+
+.container, .footer .wrap {
+    margin: 0px auto;    
+    position: relative;
+    width: 100%;
+}
+
+a, a:visited, a:link {
+    color: #2160A6;
+}
+
+#admin_logo {
+	float: left;
+	margin-left: 5px;
+}
+
+.header {
+    background: #084898;
+    color: #FFFFFF;
+    font-size: 16px;
+    height: 30px;
+    margin: 0;    
+    text-align: center;
+    width: 100%;
+    padding: 5px 0px 0px 0px;
+}
+    
+.content {    
+    background: #FFFFFF;
+    opacity: 0.9;
+    visibility: 0.9;
+    min-height: 400px;
+    border: 1px solid #EDEDED; 
+}
+
+.breadcrumbs {
+    color: #2160A6;
+    font-size: 11px;
+    padding: 9px 14px;
+}
+
+.breadcrumbs strong {
+    color: #2160A6;
+    font-weight: normal;
+}
+
+.footer {
+    color: #808080;
+    min-width: 1097px;
+    padding: 14px 0;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+h2 {
+    color: #229F01;    
+    font-size: 22px;
+}
+
+b {
+    font-weight: bold;
+}
+
+div.form_field {
+    margin: 2px;
+}
+
+div.form_field label {    
+    display: block;
+    float: left;
+    width: 160px;
+	text-align: right;
+}
+
+div.form_field input[type=text], div.form_field select, div.form_field textarea {
+    border: 1px solid #C1C1C1;
+    width: 810px;        
+}
+
+div#edit_email div.form_field label {
+	width: 100px;
+}
+
+div#edit_email div.form_field input[type=text]{ 
+    width: 510px;        
+}
+
+div#edit_menu div.form_field label {
+	width: 100px;
+}
+
+div#edit_menu div.form_field input[type=text], div#edit_menu div.form_field select { 
+    width: 200px;        
+}
+
+table {
+	border-spacing: 0;
+	border-collapse: collapse;
+	border: 1px solid #909090;
+}
+
+table th {
+	border-top: 1px solid #B0B0B0;
+	border-bottom: 1px solid #B0B0B0;
+	font-weight: bold;
+	background: #CCCCCC;
+}
+
+table tr td {
+	padding: 2px 5px;
+	border-bottom: 1px solid #D0D0D0;
+}
+
+table tr:hover {
+	background-color: #E0E0E0;
+}
+
+p#subscribers_list {
+	display: none;
+	background: none repeat scroll 0 0 #EEEEEE;
+    border: 1px solid #E6E6E6;    
+    padding: 5px 10px;
+}
+
+tr.sub_menu td {
+	color: #898989;
+}
+
+div#image_preview {
+	width: 120px;
+	height: 75px;
+	background: #E0E0E0;
+	margin-right: 10px;
+	border: 1px solid #D0D0D0;
+}
+
+form#save_settings_form > div p {
+	margin: 0px 0px 10px 0px;
+}
+
+form#save_settings_form > div {
+	padding: 10px;
+}

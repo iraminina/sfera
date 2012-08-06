@@ -1,0 +1,9 @@
+<h2>География&nbsp;работы<span>.....................</span></h2>
+Мы работаем в городах:<br/>
+<?php foreach(explode(',', $config['geography_text']) as $city) { ?>
+	<?php if(strlen(trim($city))>0) { ?>
+		<span class="blue"><?php echo trim($city) ?></span>
+	<?php } ?>
+<?php } ?>
+
+<div class="hr"></div>

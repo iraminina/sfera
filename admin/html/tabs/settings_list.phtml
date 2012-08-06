@@ -1,0 +1,71 @@
+<button class="save_settings">Сохранить настройки</button>
+<p id="settings_message" class="green"></p>
+<form id="save_settings_form" method="POST">
+	<div>
+		<p><b>Основные настройки</b>:</p>
+		<div class="form_field">
+			<label for="general_title">Заголовок по умолчанию:&nbsp;&nbsp;</label> <input class="settings_item" type="text" name="general_title" id="general_title" value="<?php echo $config['general_title'] ?>"/>   
+		</div>
+		<div class="form_field">
+			<label for="general_top_menu_count">Количество элементов меню:&nbsp;&nbsp;</label> <input class="settings_item" type="text" name="general_top_menu_count" id="general_top_menu_count" value="<?php echo $config['general_top_menu_count'] ?>" />   
+		</div>
+		<div class="form_field">
+			<label for="general_company_name">Название компании:&nbsp;&nbsp;</label> <input class="settings_item" type="text" name="general_company_name" id="general_company_name" value="<?php echo $config['general_company_name'] ?>" />   
+		</div>
+		<div class="form_field">
+			<label for="general_company_address">Адрес компании:&nbsp;&nbsp;</label> <input class="settings_item" type="text" name="general_company_address" id="general_company_address" value="<?php echo $config['general_company_address'] ?>" />   
+		</div>
+	</div>
+	<div class="bg_grey">
+		<p><b>Раздел "Наши клиенты"</b>:</p>
+		<div class="form_field">
+			<label for="client_button_label">Текст кнопки:&nbsp;&nbsp;</label> <input class="settings_item" type="text" name="client_button_label" id="client_button_label" value="<?php echo $config['client_button_label'] ?>" />   
+		</div>
+		<div class="form_field">
+			<label for="clients_all_url">Ссылка на всех клиентов:&nbsp;&nbsp;</label> <input class="settings_item" type="text" name="clients_all_url" id="clients_all_url" value="<?php echo $config['clients_all_url'] ?>" />
+		</div>	
+	</div>
+	<div>
+		<p><b>Раздел "Новости"</b>:</p>
+		<div class="form_field">
+			<label for="news_button_label">Текст кнопки:&nbsp;&nbsp;</label> <input class="settings_item" type="text" name="news_button_label" id="news_button_label" value="<?php echo $config['news_button_label'] ?>" />   
+		</div>
+		<div class="form_field">
+			<label for="news_all_url">Ссылка на все новости:&nbsp;&nbsp;</label> <input class="settings_item" type="text" name="news_all_url" id="news_all_url" value="<?php echo $config['news_all_url'] ?>" />
+		</div>
+		<div class="form_field">
+			<label for="news_count">Показать новостей:&nbsp;&nbsp;</label> <input class="settings_item" type="text" name="news_count" id="news_count" value="<?php echo $config['news_count'] ?>" />
+		</div>
+	</div>
+	<div class="bg_grey">
+		<p><b>Раздел "К прочтению"</b>:</p>
+		<div class="form_field">
+			<label for="articles_button_label">Текст кнопки:&nbsp;&nbsp;</label> <input class="settings_item" type="text" name="articles_button_label" id="articles_button_label" value="<?php echo $config['articles_button_label'] ?>" />   
+		</div>
+		<div class="form_field">
+			<label for="articles_all_url">Ссылка на все статьи:&nbsp;&nbsp;</label> <input class="settings_item" type="text" name="articles_all_url" id="articles_all_url" value="<?php echo $config['articles_all_url'] ?>" />
+		</div>
+		<div class="form_field">
+			<label for="articles_count">Показать статей:&nbsp;&nbsp;</label> <input class="settings_item" type="text" name="articles_count" id="articles_count" value="<?php echo $config['articles_count'] ?>" />
+		</div>
+	</div>
+	<div>
+		<p><b>Раздел "Нас рекомендуют"</b>:</p>
+		<div class="form_field">
+			<label for="recommendations_text">Текст на главной:&nbsp;&nbsp;</label> <textarea class="settings_item" rows="5" name="recommendations_text" id="recommendations_text"><?php echo $config['recommendations_text'] ?></textarea>   
+		</div>
+		<div class="form_field">
+			<label for="recommendations_button_label">Текст кнопки:&nbsp;&nbsp;</label> <input class="settings_item" type="text" name="recommendations_button_label" id="recommendations_button_label" value="<?php echo $config['recommendations_button_label'] ?>" />   
+		</div>
+		<div class="form_field">
+			<label for="recommendations_all_url">Ссылка на все рекомендации:&nbsp;&nbsp;</label> <input class="settings_item" type="text" name="recommendations_all_url" id="recommendations_all_url" value="<?php echo $config['recommendations_all_url'] ?>" />
+		</div>
+	</div>
+	<div class="bg_grey">
+		<p><b>Раздел "География работы"</b>:</p>
+		<div class="form_field">
+			<label for="geography_text">Текст на главной&nbsp;&nbsp;<br>(список городов через , ):&nbsp;&nbsp;</label> <textarea class="settings_item" rows="5" name="geography_text" id="geography_text"><?php echo $config['geography_text'] ?></textarea>   
+		</div>
+	</div>	
+</form>
+<button class="save_settings">Сохранить настройки</button>
