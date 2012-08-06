@@ -40,9 +40,10 @@ class common {
 		return $row;
 	}
 	
-	public function getPages() {
+	public function getPages($category=-1) {
 		global $con;
-		$query = "SELECT * FROM page ORDER BY title";
+		$where = in_array($category, array(0,1,2,3,4)) ? 'WHERE page_category_id='.$category : '';
+		$query = "SELECT * FROM page {$where} ORDER BY title";		
 		$res = mysql_query($query, $con);
 		$rows = array();
 		while($row = mysql_fetch_object($res)) $rows[$row->id] = $row;
@@ -129,7 +130,7 @@ class common {
 	public function getMenu($category=-1) {
 		global $con;
 		$where = in_array($category, array(0,1,2)) ? ' AND menu_category_id='.$category : '';
-		$query = "SELECT menu.*, page.url
+		$query = "SELECT menu.*, page.url, page.title page_title
 				  FROM menu LEFT JOIN page ON page.id=menu.page_id
 				  WHERE parent_id=0 {$where} 
 				  ORDER BY menu_category_id ASC, `order`, name";

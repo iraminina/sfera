@@ -8,7 +8,7 @@ $objCommon = new common();
 
 switch($_REQUEST['action']) {
 	case 'get_data':
-		$pages = $objCommon->getPages();
+		$pages = $objCommon->getPages(intval($_REQUEST['page_category']));
 		$emails = $objCommon->getEmails();
 		$menu = $objCommon->getMenu(intval($_REQUEST['menu_category']));
 		

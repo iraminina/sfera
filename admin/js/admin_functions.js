@@ -22,7 +22,7 @@
 	},
 	
 	initData: function() {
-		$.getJSON('ajax.php?action=get_data', {menu_category: $("#filter_category_id").val()}, function(data) {
+		$.getJSON('ajax.php?action=get_data', {menu_category: $("#filter_category_id").val(), page_category: $("#filter_page_category_id").val()}, function(data) {
 			$.sfera_admin.pagesData = data.pages;
 			$.sfera_admin.drawPages();		
 
@@ -266,6 +266,7 @@
 			$("#page_meta_keywords").val(unescape($.sfera_admin.pagesData[page_id].meta_keywords));
 			$("#page_category_id").val(unescape($.sfera_admin.pagesData[page_id].page_category_id));
 			$("#page_created_date").val($.datepicker.formatDate('dd-mm-yy', new Date(unescape($.sfera_admin.pagesData[page_id].created_date)))).datepicker();
+			$("#page_category_id").change();
 			$( "#edit_page" ).dialog( "open" );
 			return false;
 		});	
@@ -287,15 +288,44 @@
 		});
 		
 		$( "#new_page" ).click(function() {
-			$("p#page_success, p#page_error").html('');
-			$("#page_id, #page_category_id").val(0);
-			$("#page_title, #page_url, #page_description, #page_meta_description, #page_meta_keywords, #page_created_date").val('');
-			$("#page_created_date").datepicker();
-			CKEDITOR.instances['page_content'].setData('');			
+			$.sfera_admin.fillEmptyPageForm();			
+			$("#page_category_id").val(0);			
 			$( "#edit_page" ).dialog( "open" );
 			return false;
 		});
 		
+		$("div#edit_page").delegate("select#page_category_id", "change", function(){
+			switch(parseInt($(this).val())) {
+				case 1: //Статические
+					$("#page_description_block #page_description, #page_created_date_block #page_created_date").val('');
+					$("#page_description_block, #page_created_date_block").hide();
+				break;
+				case 2: //Каталог
+					$("#page_description_block #page_description, #page_created_date_block #page_created_date").val('');
+					$("#page_description_block, #page_created_date_block").hide();
+				break;
+				case 3: //Новости				
+					$("#page_description_block, #page_created_date_block").show();					
+				break;
+				case 4: //К прочтению
+					$("#page_created_date_block #page_created_date").val('');
+					$("#page_description_block").show();
+					$("#page_created_date_block").hide();
+				break;				
+				default: //Спрятано
+					$("#page_description_block #page_description, #page_created_date_block #page_created_date").val('');
+					$("#page_description_block, #page_created_date_block").hide();
+				break;
+			}
+		});
+		
+		$("div#tabs-pages").delegate("a.quick_link", "click", function(){
+			$.sfera_admin.fillEmptyPageForm();			
+			$("#page_category_id").val($(this).attr('rel')).change();			
+			$( "div#edit_page" ).dialog( "open" );
+			return false;
+		});
+				
 		$( "#new_menu" ).click(function() {
 			var pages_select = $.sfera_admin.getEditMenuPagesSelect();			
 			var parents_select = $.sfera_admin.getEditMenuParentsSelect();
@@ -362,7 +392,11 @@
 
 		$("div#tabs-menu").delegate("select#filter_category_id", "change", function(){
 			$.sfera_admin.initData();	
-		});	
+		});
+
+		$("div#tabs-pages").delegate("select#filter_page_category_id", "change", function(){
+			$.sfera_admin.initData();	
+		});		
 
 		$("div#tabs-settings").delegate("button.save_settings", "click", function(){
 			$("#settings_message").html("");
@@ -383,6 +417,15 @@
 				$("#settings_message").html("Данные сохранены.");			
 			});			
 		});	
+	},
+	
+	fillEmptyPageForm: function () {
+		$("p#page_success, p#page_error").html('');
+		$("#page_id, #page_category_id").val(0);
+		$("#page_title, #page_url, #page_description, #page_meta_description, #page_meta_keywords, #page_created_date").val('');
+		$("#page_created_date").datepicker();
+		CKEDITOR.instances['page_content'].setData('');
+		$("#page_category_id").change();
 	},
 	
 	getEditMenuPagesSelect: function() {
@@ -426,7 +469,7 @@
 				default: category = 'Спрятано'; break;
 			}
 			html += '<tr>' +
-						'<td>' +
+						'<td width="150">' +
 							'<a href="#" class="blue edit_page" rel="' + unescape(page.id) + '">Редактировать</a>' +
 							'&nbsp;|&nbsp;' +
 							'<a href="#" class="red delete_page" rel="' + unescape(page.id) + '">Удалить</a>' +
@@ -481,7 +524,8 @@
 						'<td width="70" align="center">' + unescape(menu.order) + '</td>' +
 						'<td width="200">' + (menu.parent_id==0 ? '' : unescape($.sfera_admin.menuData[menu.parent_id].data.name)) + '</td>' +
 						'<td width="200">' + 
-							(menu.page_id==0 ? '' : '<a target="_blank" href="/' + unescape($.sfera_admin.pagesData[menu.page_id].url) + '">' + unescape($.sfera_admin.pagesData[menu.page_id].title) + '</a>') +
+							(menu.page_id==0 ? '' 
+							: '<a target="_blank" href="/' + unescape(menu.url) + '">' + unescape(menu.page_title) + '</a>') +
 						'</td>' +
 						'<td width="200" align="center">' + category + '</td>' +
 					'</tr>';
