@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 class common {
 
@@ -44,6 +44,24 @@ class common {
 		global $con;
 		$where = in_array($category, array(0,1,2,3,4)) ? 'WHERE page_category_id='.$category : '';
 		$query = "SELECT * FROM page {$where} ORDER BY title";		
+		$res = mysql_query($query, $con);
+		$rows = array();
+		while($row = mysql_fetch_object($res)) $rows[$row->id] = $row;
+		return $rows;
+	}
+	
+	public function getNews($max_count) {
+		global $con;		
+		$query = "SELECT * FROM page WHERE page_category_id=3 ORDER BY created_date DESC, title LIMIT 0,{$max_count}";		
+		$res = mysql_query($query, $con);
+		$rows = array();
+		while($row = mysql_fetch_object($res)) $rows[$row->id] = $row;
+		return $rows;
+	}
+	
+	public function getArticles($max_count) {
+		global $con;		
+		$query = "SELECT * FROM page WHERE page_category_id=4 ORDER BY created_date DESC, title LIMIT 0,{$max_count}";		
 		$res = mysql_query($query, $con);
 		$rows = array();
 		while($row = mysql_fetch_object($res)) $rows[$row->id] = $row;
@@ -213,6 +231,16 @@ class common {
 	public function convertString($string)	{
 		$string = preg_replace('/%u([0-9A-F]+)/', '&#x$1;', $string);
 		return rawurldecode(html_entity_decode($string, ENT_COMPAT, 'UTF-8'));
+	}
+	
+	public function convertDate($date)	{
+		$month_translations = array('January' => 'января', 'February' => 'февраля', 'March' => 'марта', 'April' => 'апреля', 
+									'May' => 'мая', 'June' => 'июня', 'July' => 'июля', 'August' => 'августа', 
+									'September' => 'сентября', 'October' => 'октября', 'November' => 'ноября', 'December' => 'декабря'	);
+		$result = date("d F Y", strtotime($date));
+		$month = date("F", strtotime($date));
+		$result = preg_replace('/([a-zA-Z]+)/', $month_translations[$month], $result);
+		return $result;
 	}
 
 }

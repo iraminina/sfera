@@ -20,6 +20,32 @@
 		init: function() {
 			__initDOM();
 			$("div#subscribe").hide();
+			var current_page = '';
+			$("div.menu_item").each(function(key, value) {				
+				current_page = $(this).find("a").attr("href").replace('/','');				
+				if(current_page.length>0 && $.inArray(current_page, location.href.split('/'))>-1) {					
+					if(key==0) { //first item
+						$($("div.menu_item")[key]).addClass("menu_item_active_first");
+					} else if(key==1) { //second item
+						$($("div.menu_item")[key-1]).addClass("menu_item_first_active_prev");
+						$($("div.menu_item")[key]).addClass("menu_item_active");
+					} else if(key==$("div.menu_item").size()-1) { //last item
+						$($("div.menu_item")[key-1]).addClass("menu_item_active_prev");
+						$($("div.menu_item")[key]).addClass("menu_item_last_active");
+					} else { //all other
+						$($("div.menu_item")[key-1]).addClass("menu_item_active_prev");
+						$($("div.menu_item")[key]).addClass("menu_item_active");
+					}										
+				}				
+			});
+			$("ul.left_menu_items li").each(function(key, value) {				
+				current_page = $(this).find("a").attr("href").replace('/','');				
+				if(current_page.length>0 && $.inArray(current_page, location.href.split('/'))>-1) {					
+					$(this).addClass("current");					
+				}				
+			});
+
+			
 		}
 	};   
     /**************************** Private functions ****************************/ 

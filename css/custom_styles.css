@@ -211,6 +211,11 @@ div.menu_item_first {
 	width: 130px;
 }
 
+div.menu_item_first_active_prev {
+	background: #F5F5F5 url('../images/menu_item_first_active_prev.png') no-repeat right top;
+	width: 130px;
+}
+
 div.menu_item_active_first {
 	background: #F5F5F5 url('../images/menu_item_first_active.png') no-repeat right top;
 	width: 130px;

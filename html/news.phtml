@@ -1,10 +1,9 @@
 <h2>Новости<span>.......................................</span></h2>
 <div class="news">
-	<p class="grey">17 августа 2011 года</p>
-	<p class="black"><a href="" class="black">Кабинет руководителя "Верона" - удачное решение для тех...</a><span class="blue">»</span></p>
-	
-	<p class="grey">17 августа 2011 года</p>
-	<p class="black"><a href="" class="black">Кабинет руководителя "Верона" - удачное решение для тех...</a><span class="blue">»</span></p>
+	<?php foreach($news as $item) { ?>
+		<p class="grey"><?php echo $objCommon->convertDate($item->created_date)?> года</p>
+		<p class="black"><a href="<?php echo $objCommon->convertString($item->url) ?>" class="black"><?php echo $objCommon->convertString($item->page_description) ?>...</a><span class="blue">»</span></p>		
+	<?php } ?>
 	
 	<div class="clearfix"></div>	
 	<button class="green fleft" id="subscribe_btn">Подписаться</button>

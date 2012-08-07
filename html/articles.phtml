@@ -1,14 +1,10 @@
 <h2>К&nbsp;прочтению<span>...............................</span></h2>
 <div class="articles">
-	<p class="black"><a href="" class="black">Дизайн шкафа-купе</a></p>
-	<p class="grey">Кабинет руководителя "Верона" - удачное решение для тех, кто хотел бы получить добротный...<span class="blue">»</span></p>
-	
-	<p class="black"><a href="" class="black">Дизайн шкафа-купе</a></p>
-	<p class="grey">Кабинет руководителя "Верона" - удачное решение для тех, кто хотел бы получить добротный...<span class="blue">»</span></p>
-	
-	<p class="black"><a href="" class="black">Дизайн шкафа-купе</a></p>
-	<p class="grey">Кабинет руководителя "Верона" - удачное решение для тех, кто хотел бы получить добротный...<span class="blue">»</span></p>
-	
+	<?php foreach($articles as $item) { ?>
+		<p class="black"><a href="<?php echo $objCommon->convertString($item->url) ?>" class="black"><?php echo $objCommon->convertString($item->title)?></a></p>
+		<p class="grey"><?php echo $objCommon->convertString($item->page_description) ?>...<span class="blue">»</span></p>		
+	<?php } ?>
+		
 	<div class="clearfix"></div>	
 	<button class="blue fright" onclick="location.href='<?php echo $config['articles_all_url'] ?>';"><?php echo $config['articles_button_label'] ?><span>+</span></button>
 	<div class="clearfix"></div>

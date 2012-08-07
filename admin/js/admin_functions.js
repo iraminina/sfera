@@ -1,5 +1,6 @@
 ﻿$.sfera_admin = {
 	pagesData: null,
+	allPagesData: null,
 	emailsData: null,
 	menuData: null,
 	categoriesImagesData: null,
@@ -22,7 +23,9 @@
 	},
 	
 	initData: function() {
-		$.getJSON('ajax.php?action=get_data', {menu_category: $("#filter_category_id").val(), page_category: $("#filter_page_category_id").val()}, function(data) {
+		$.getJSON('ajax.php?action=get_data', {menu_category: $("#filter_category_id").val(), page_category: $("#filter_page_category_id").val()}, function(data) {		
+			$.sfera_admin.allPagesData = data.all_pages;
+			
 			$.sfera_admin.pagesData = data.pages;
 			$.sfera_admin.drawPages();		
 
@@ -431,7 +434,7 @@
 	getEditMenuPagesSelect: function() {
 		var pages_select = '';
 		pages_select += '<option value="0">Не задана</option>';
-		$.each($.sfera_admin.pagesData, function(key, page) {
+		$.each($.sfera_admin.allPagesData, function(key, page) {
 			pages_select += '<option value="' + page.id + '">' + page.id + ': ' + unescape(page.title) + '</option>';
 		});
 		return pages_select;

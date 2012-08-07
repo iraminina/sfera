@@ -19,7 +19,7 @@
 <?php if($menu_item['data']->menu_category_id!=1 || $cnt>$config['general_top_menu_count']) continue; ?>
 <div class="menu_item 
 	<?php echo ($cnt==1 ? 'menu_item_first' : '') ?> 
-	<?php echo ($cnt==$config['general_top_menu_count'] ? 'menu_item_last' : '') ?>"> 
+	<?php echo ($cnt==$config['general_top_menu_count'] ? 'menu_item_last' : '') ?> ">
 	<a href="/<?php echo $menu_item['data']->url ?>" title="<?php echo $objCommon->convertString($menu_item['data']->name) ?>"><?php echo $objCommon->convertString($menu_item['data']->name) ?></a>	
 	<?php $cnt++; ?>
 </div>

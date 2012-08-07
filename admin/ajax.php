@@ -9,10 +9,11 @@ $objCommon = new common();
 switch($_REQUEST['action']) {
 	case 'get_data':
 		$pages = $objCommon->getPages(intval($_REQUEST['page_category']));
+		$all_pages = $objCommon->getPages();
 		$emails = $objCommon->getEmails();
 		$menu = $objCommon->getMenu(intval($_REQUEST['menu_category']));
 		
-		$result = array('pages' => $pages, 'emails' => $emails, 'menu' => $menu);
+		$result = array('all_pages' => $all_pages, 'pages' => $pages, 'emails' => $emails, 'menu' => $menu);
 		echo json_encode($result);
 	break;
 	

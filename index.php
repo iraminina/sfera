@@ -16,6 +16,7 @@ $title = $page ? $objCommon->convertString($page->title) : $config['general_titl
 $keywords = $page ? $objCommon->convertString($page->meta_keywords) : '';
 $description = $page ? $objCommon->convertString($page->meta_description) : '';
 $menu = $objCommon->getMenu();
-
+$news = $objCommon->getNews(intval($config['news_count']));
+$articles = $objCommon->getArticles(intval($config['articles_count']));
 include 'html/index.phtml';
 ?>
