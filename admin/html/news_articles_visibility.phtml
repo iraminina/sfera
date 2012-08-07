@@ -1,0 +1,32 @@
+<a id="hide_setup_visibility" href="#">Спрятать настройки</a> 
+<br/><br/>
+<table class="visibility-table">
+	<tr>
+		<th width="170">&nbsp;</th>
+		<?php foreach($menu as $menu_item) { ?>
+			<th><div><?php echo $objCommon->convertString($menu_item['data']->name) ?></div></th>			
+		<?php } ?>		
+	</tr>
+	<tr>
+		<td colspan="<?php echo count($news)+1 ?>"><b>Новости</b></td>
+	</tr>
+	<?php foreach($news as $news_item) { ?>
+	<tr>
+		<td width="170"><?php echo $objCommon->convertString($news_item->title) ?></td>
+		<?php foreach($menu as $menu_item) { ?>
+			<td class="settings"><input type="checkbox" value="" /></td>		
+		<?php } ?>
+	</tr>
+	<?php } ?>
+	<tr>
+		<td colspan="<?php echo count($articles)+1 ?>"><b>К прочтению</b></td>
+	</tr>
+	<?php foreach($articles as $news_item) { ?>
+	<tr>
+		<td width="170"><?php echo $objCommon->convertString($news_item->title) ?></td>
+		<?php foreach($menu as $menu_item) { ?>
+			<td class="settings"><input type="checkbox" value="" /></td>		
+		<?php } ?>
+	</tr>
+	<?php } ?>
+</table>

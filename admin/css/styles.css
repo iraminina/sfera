@@ -210,3 +210,37 @@ div.quick-links div img {
 	height: 26px;
 	width: 26px;
 }
+
+.hidden {
+	display: none;
+}
+
+div.vertical-text {
+	writing-mode: bt-rl;
+	-webkit-transform: rotate(270deg);	
+	-moz-transform: rotate(270deg);
+	-ms-transform: rotate(270deg);
+	-o-transform: rotate(270deg);
+	transform: rotate(270deg);
+	white-space: pre;
+}
+
+table.visibility-table tr th, table.visibility-table tr td {
+	border: 1px solid #898989;
+}
+
+table.visibility-table th {	
+	width: 63px;
+	font-weight: normal;	
+}
+
+table.visibility-table th div {
+	margin: 2px 0;
+	word-wrap: break-word;
+	width: 63px;
+	font-size: 11px;
+}
+
+table.visibility-table td.settings {
+	text-align: center;
+}

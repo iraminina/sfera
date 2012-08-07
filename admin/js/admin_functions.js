@@ -323,6 +323,7 @@
 		});
 		
 		$("div#tabs-pages").delegate("a.quick_link", "click", function(){
+			$("#visibility-block").hide();
 			$.sfera_admin.fillEmptyPageForm();			
 			$("#page_category_id").val($(this).attr('rel')).change();			
 			$( "div#edit_page" ).dialog( "open" );
@@ -400,7 +401,15 @@
 		$("div#tabs-pages").delegate("select#filter_page_category_id", "change", function(){
 			$.sfera_admin.initData();	
 		});		
-
+		
+		$("div#tabs-pages").delegate("a.setup_visibility", "click", function(){
+			$("#visibility-block").load("visibility_setup.php").show();
+		});
+		
+		$("div#tabs-pages").delegate("a#hide_setup_visibility", "click", function(){
+			$("#visibility-block").html('').hide();
+		});
+				
 		$("div#tabs-settings").delegate("button.save_settings", "click", function(){
 			$("#settings_message").html("");
 			var settings = {};

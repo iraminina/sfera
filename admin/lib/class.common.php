@@ -50,18 +50,20 @@ class common {
 		return $rows;
 	}
 	
-	public function getNews($max_count) {
+	public function getNews($max_count=-1) {
 		global $con;		
-		$query = "SELECT * FROM page WHERE page_category_id=3 ORDER BY created_date DESC, title LIMIT 0,{$max_count}";		
+		$limit = $max_count!=-1 ? "LIMIT 0,{$max_count}" : "";
+		$query = "SELECT * FROM page WHERE page_category_id=3 ORDER BY created_date DESC, title {$limit}";		
 		$res = mysql_query($query, $con);
 		$rows = array();
 		while($row = mysql_fetch_object($res)) $rows[$row->id] = $row;
 		return $rows;
 	}
 	
-	public function getArticles($max_count) {
-		global $con;		
-		$query = "SELECT * FROM page WHERE page_category_id=4 ORDER BY created_date DESC, title LIMIT 0,{$max_count}";		
+	public function getArticles($max_count=-1) {
+		global $con;
+		$limit = $max_count!=-1 ? "LIMIT 0,{$max_count}" : "";
+		$query = "SELECT * FROM page WHERE page_category_id=4 ORDER BY created_date DESC, title {$limit}";		
 		$res = mysql_query($query, $con);
 		$rows = array();
 		while($row = mysql_fetch_object($res)) $rows[$row->id] = $row;
