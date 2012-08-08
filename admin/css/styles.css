@@ -234,6 +234,10 @@ table.visibility-table th {
 	font-weight: normal;	
 }
 
+table.visibility-table th.menu-category {	
+	font-size: 10px;
+}
+
 table.visibility-table th div {
 	margin: 2px;
 	word-wrap: break-word;

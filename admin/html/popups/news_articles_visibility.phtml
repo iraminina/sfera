@@ -1,0 +1,46 @@
+<p id="visibility_success" class="green fleft"></p>
+<table class="visibility-table">
+	<tr>
+		<th width="200">&nbsp;</th>
+		<?php foreach($menu as $menu_item) { ?>
+			<th><div><?php echo $objCommon->convertString($menu_item['data']->name) ?></div></th>			
+		<?php } ?>		
+	</tr>
+	<tr>
+		<th width="200">&nbsp;</th>
+		<?php foreach($menu as $menu_item) { ?>
+		<?php 
+			switch($objCommon->convertString($menu_item['data']->menu_category_id)) {
+				case 1: $category = 'Верхнее меню'; break;
+				case 2: $category = 'Меню слева'; break;
+				default: $category = 'Спрятано'; break;
+			}
+		?>
+			<th class="menu-category"><?php echo $category ?></th>			
+		<?php } ?>		
+	</tr>
+	<tr>
+		<td colspan="<?php echo count($news)+1 ?>"><b>Новости</b></td>
+	</tr>
+	<?php foreach($news as $news_item) { ?>
+	<tr>
+		<td width="200"><?php echo $objCommon->convertString($news_item->title) ?></td>
+		<?php foreach($menu as $menu_item) { ?>
+			<?php $current = $news_item->id . '_' . $menu_item['data']->id; ?>
+			<td class="settings"><input type="checkbox" name="news[]" value="<?php echo $current ?>" <?php echo(isset($visibilities['news'][$current]) ? 'checked' : '') ?>/></td>		
+		<?php } ?>
+	</tr>
+	<?php } ?>
+	<tr>
+		<td colspan="<?php echo count($articles)+1 ?>"><b>К прочтению</b></td>
+	</tr>
+	<?php foreach($articles as $articles_item) { ?>
+	<tr>
+		<td width="200"><?php echo $objCommon->convertString($articles_item->title) ?></td>
+		<?php foreach($menu as $menu_item) { ?>
+			<?php $current = $articles_item->id . '_' . $menu_item['data']->id; ?>
+			<td class="settings"><input type="checkbox" name="articles[]" value="<?php echo $current ?>" <?php echo(isset($visibilities['articles'][$current]) ? 'checked' : '') ?>/></td>					
+		<?php } ?>
+	</tr>
+	<?php } ?>
+</table>

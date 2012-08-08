@@ -1,81 +1,6 @@
 ﻿<?php
 
 class common {
-
-    ##### Pages #####	
-    public function savePage($params) {
-		global $con;
-		if(strlen($params['page_title'])==0) return array('result' => false, 'error' => 'EMPTY_PAGE_TITLE');
-		if(strlen($params['page_url'])==0) return array('result' => false, 'error' => 'EMPTY_PAGE_URL');
-		
-		$query = "SELECT id FROM page WHERE url='{$params['page_url']}' AND id!=".intval($params['page_id']);
-		$res = mysql_query($query, $con);		
-		if(mysql_num_rows($res)>0)  return array('result' => false, 'error' => 'NOT_UNIQUE_URL');
-		
-		$created_date = date("Y-m-d", strtotime($this->convertString($params['created_date'])));
-		
-		if(intval($params['page_id'])==0)
-			$query = "INSERT INTO page(title, content, page_description, meta_keywords, meta_description, url, page_category_id, created_date) 
-					  VALUES('{$params['page_title']}', '{$params['page_content']}', '{$params['page_description']}', '{$params['page_meta_keywords']}', '{$params['page_meta_description']}', '{$params['page_url']}', {$params['page_category_id']}, '{$created_date}')";
-		else
-			$query = "UPDATE page
-					  SET title='{$params['page_title']}',
-						content='{$params['page_content']}', 
-						page_description='{$params['page_description']}',
-						meta_keywords='{$params['page_meta_keywords']}',
-						meta_description='{$params['page_meta_description']}',
-						url='{$params['page_url']}',
-						page_category_id={$params['page_category_id']},
-						created_date='{$created_date}'
-					  WHERE id=".intval($params['page_id']);
-		$res = mysql_query($query, $con);
-		return array('result' => true, 'error' => '');
-    } 
-
-	public function getPageByURL($page_url) {
-		global $con;
-		$query = "SELECT * FROM page WHERE url='{$page_url}'";
-		$res = mysql_query($query, $con);
-		$row = mysql_fetch_object($res);
-		return $row;
-	}
-	
-	public function getPages($category=-1) {
-		global $con;
-		$where = in_array($category, array(0,1,2,3,4)) ? 'WHERE page_category_id='.$category : '';
-		$query = "SELECT * FROM page {$where} ORDER BY title";		
-		$res = mysql_query($query, $con);
-		$rows = array();
-		while($row = mysql_fetch_object($res)) $rows[$row->id] = $row;
-		return $rows;
-	}
-	
-	public function getNews($max_count=-1) {
-		global $con;		
-		$limit = $max_count!=-1 ? "LIMIT 0,{$max_count}" : "";
-		$query = "SELECT * FROM page WHERE page_category_id=3 ORDER BY created_date DESC, title {$limit}";		
-		$res = mysql_query($query, $con);
-		$rows = array();
-		while($row = mysql_fetch_object($res)) $rows[$row->id] = $row;
-		return $rows;
-	}
-	
-	public function getArticles($max_count=-1) {
-		global $con;
-		$limit = $max_count!=-1 ? "LIMIT 0,{$max_count}" : "";
-		$query = "SELECT * FROM page WHERE page_category_id=4 ORDER BY created_date DESC, title {$limit}";		
-		$res = mysql_query($query, $con);
-		$rows = array();
-		while($row = mysql_fetch_object($res)) $rows[$row->id] = $row;
-		return $rows;
-	}
-	
-	public function deletePage($page_id) {
-		global $con;
-		$query = "DELETE FROM page WHERE id=".intval($page_id);
-		$res = mysql_query($query, $con);
-		return $res ? true: false;
-	}
 		
 	##### E-mails #####	
 	public function saveEmail($email, $description='', $id=0) {
@@ -175,6 +100,51 @@ class common {
 		$query = "DELETE FROM menu WHERE id=".intval($menu_id);
 		$res = mysql_query($query, $con);
 		return $res ? true: false;
+	}
+	
+	##### Visibility #####
+	public function saveVisibility($visibility) {
+		global $con;
+						
+		$query = "DELETE FROM visibility_setup";
+		$res = mysql_query($query, $con);
+		
+		foreach($visibility as $item_type=>$items) {
+			foreach($items as $item) {
+				list($item_id, $menu_id) = explode('_', $item);
+				$query = "INSERT INTO visibility_setup(menu_id, item_id, item_type) VALUES({$menu_id}, {$item_id}, '{$item_type}')";				
+				$res = mysql_query($query, $con);
+				
+				//link same item_id to submenues
+				$query = "SELECT id FROM menu WHERE parent_id={$menu_id}";
+				$sub_res = mysql_query($query, $con);				
+				while($sub_row = mysql_fetch_object($sub_res))
+				{
+					$query = "INSERT INTO visibility_setup(menu_id, item_id, item_type) VALUES({$sub_row->id}, {$item_id}, '{$item_type}')";				
+					$res = mysql_query($query, $con);					
+				}
+			}
+		}				
+		return true;
+	}
+	
+	public function getVisibilities() {
+		global $con;		
+		$query = "SELECT * FROM visibility_setup";
+		$res = mysql_query($query, $con);
+		$rows = array();
+		while($row = mysql_fetch_object($res))
+		{
+			$rows[$row->item_type][$row->item_id.'_'.$row->menu_id] = $row;
+		}
+		return $rows;
+	}
+	
+	public function isVisible($menu_id, $item_id, $item_type) {
+		global $con;		
+		$query = "SELECT id FROM visibility_setup WHERE menu_id={$menu_id} AND item_id={$item_id} AND item_type='{$item_type}'";
+		$res = mysql_query($query, $con);
+		return mysql_num_rows($res)>0 ? true : false;
 	}
 	
 	##### Settings #####

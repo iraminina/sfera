@@ -1,15 +1,11 @@
 <?php
 
 require_once '../conf.php';
-require_once 'lib/class.common.php';
-
-global $con;
-$objCommon = new common();
 
 switch($_REQUEST['action']) {
 	case 'get_data':
-		$pages = $objCommon->getPages(intval($_REQUEST['page_category']));
-		$all_pages = $objCommon->getPages();
+		$pages = $objPage->getPages(intval($_REQUEST['page_category']));
+		$all_pages = $objPage->getPages();
 		$emails = $objCommon->getEmails();
 		$menu = $objCommon->getMenu(intval($_REQUEST['menu_category']));
 		
@@ -27,12 +23,12 @@ switch($_REQUEST['action']) {
 						'page_url' => $_REQUEST['page_url'],
 						'page_category_id' => $_REQUEST['page_category_id'],
 						'created_date' => ($_REQUEST['page_created_date']=='' ? date("d-m-Y") : $_REQUEST['page_created_date']));
-		$result = $objCommon->savePage($data);		
+		$result = $objPage->savePage($data);		
 		echo json_encode($result);
     break;		
 			
 	case 'delete_page':
-		$objCommon->deletePage($_REQUEST['page_id']);
+		$objPage->deletePage($_REQUEST['page_id']);
 		echo json_encode(true);		
 	break;
 	
@@ -83,10 +79,16 @@ switch($_REQUEST['action']) {
 	case 'visibility_setup':
 		$config = $objCommon->getSettings();
 		$menu = $objCommon->getMenu();
-		$news = $objCommon->getNews();
-		$articles = $objCommon->getArticles();
+		$news = $objPage->getNews();
+		$articles = $objPage->getArticles();
+		$visibilities = $objCommon->getVisibilities();
+		include 'html/popups/news_articles_visibility.phtml';
+	break;
 
-		include 'html/news_articles_visibility.phtml';
+	case 'save_visibility_setup':
+		$visibility = array('news' => $_REQUEST['news'], 'articles' => $_REQUEST['articles']);
+		$objCommon->saveVisibility($visibility);
+		echo json_encode(true);
 	break;	
 }
 
