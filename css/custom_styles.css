@@ -4,8 +4,7 @@
 
 body {
     color: #333333;
-    font-family: Tahoma,Arial,Verdana,sans-serif;
-	font-size: 0px;
+    font-family: Tahoma,Arial,Verdana,sans-serif;	
     margin: 0;
     padding: 0;
     background: #F5F5F5 url("../images/body_bg.png") repeat-x;
@@ -33,7 +32,7 @@ h2 span img {
 	height: 1px;	
 }
 
-h3 {
+h3, h3 a {
 	font-size: 12px;
 	color: #0174AD;
 }
@@ -461,4 +460,40 @@ div.subscribe div.unsubscribe_block label {
 p#email_message {	
 	text-align: left;
 	margin: 2px 0;
+}
+
+div.all-news ul {
+	padding-left: 0px;
+}
+
+div.all-news li {
+	list-style: none;
+	margin: 0;
+	overflow: hidden;
+	height: 280px;
+	background: url("../images/hr_big_bg.png") no-repeat bottom center transparent;
+}
+
+div.all-news b {
+	font-weight: bold;
+}
+
+div.all-news div.news-content {
+	height: 190px;
+	overflow: hidden;
+}
+
+div.all-news-pager-block{
+	text-align: center;
+}
+
+div.all-news-pager-block a {	
+	color: #838383;
+	padding: 0 10px;
+}
+
+div.all-news-pager-block .pager-active,
+div.all-news-pager-block a:hover {
+	color: #de312a;
+	text-decoration: none;
 }

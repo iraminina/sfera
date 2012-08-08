@@ -45,7 +45,20 @@
 				}				
 			});
 
-			
+			(function($){	
+			  $(function(){
+				$('#all-news-slider').bxSlider({
+				  mode: 'vertical',
+				  pager: true,	  
+				  pagerLocation: 'top',
+				  displaySlideQty: 3,
+				  moveSlideQty: 3,
+				  pagerSelector: 'div.all-news-pager-block',
+				  infiniteLoop: false,
+				  controls: false
+				});
+			  });	
+			}(jQuery))
 		}
 	};   
     /**************************** Private functions ****************************/ 

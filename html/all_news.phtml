@@ -1,0 +1,13 @@
+<h2>Все новости<span>......................................................................................................................................</span></h2>
+<div class="all-news">	
+	<div class="all-news-pager-block"></div>
+	<ul id="all-news-slider">
+	<?php foreach($news as $item) { ?>
+	<li>
+		<h3><a href="<?php echo $objCommon->convertString($item->url) ?>"><?php echo $objCommon->convertString($item->title) ?></a></h3>
+		<b><?php echo $objCommon->convertDate($item->created_date) ?></b>
+		<div class="news-content"><?php echo $objCommon->convertString($item->content) ?></div>				
+	</li>
+	<?php } ?>
+	</ul>	
+</div>
