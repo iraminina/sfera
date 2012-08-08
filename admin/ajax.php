@@ -79,6 +79,15 @@ switch($_REQUEST['action']) {
 		$objCommon->saveSettings(json_decode($_REQUEST['settings']));
 		echo json_encode(true);
 	break;
+	
+	case 'visibility_setup':
+		$config = $objCommon->getSettings();
+		$menu = $objCommon->getMenu();
+		$news = $objCommon->getNews();
+		$articles = $objCommon->getArticles();
+
+		include 'html/news_articles_visibility.phtml';
+	break;	
 }
 
 exit;

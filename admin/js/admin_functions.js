@@ -403,11 +403,59 @@
 		});		
 		
 		$("div#tabs-pages").delegate("a.setup_visibility", "click", function(){
-			$("#visibility-block").load("visibility_setup.php").show();
-		});
-		
-		$("div#tabs-pages").delegate("a#hide_setup_visibility", "click", function(){
-			$("#visibility-block").html('').hide();
+			$.ajax({ url: "ajax.php?action=visibility_setup", type: "POST" })
+				.done(function ( data ) {
+					$("#visibility-block").html(data);
+					$("#visibility-block").dialog({						
+						height: 600,
+						width: 800,
+						modal: true,
+						title: "Настройка видимости \"Новостей\" и \"К прочтению\"",			
+						buttons: {
+							"Сохранить": function() {
+								$.ajax({
+								  url: "ajax.php?action=save_menu",
+								  type: "POST",
+								  dataType: "json",
+								  data: {	menu_id: escape($("#menu_id").val()),
+											menu_name: escape($("#menu_name").val()),
+											menu_image: escape($("#image").val()),
+											menu_order: escape($("#menu_order").val()),
+											menu_parent_id: escape($("#menu_parent_id").val()),
+											menu_page_id: escape($("#menu_page_id").val()),
+											menu_category_id: escape($("#menu_category_id").val())
+										}
+								})
+								.done(function ( data ) {
+									$("p#menu_success, p#menu_error").html('');
+									
+									if(data.result) {
+										$("p#menu_success").html("Данные сохранены.");
+										$.sfera_admin.initData();	
+									}
+									else {							
+										switch(data.error) {
+											case 'NOT_UNIQUE_MENU':
+												$("p#menu_error").html("Пункт меню с таким названием уже существует."); break;							
+												
+											default:
+												$("p#menu_error").html("Внимание! Произошла ошибка, данные не сохранены."); break;
+										}
+									}
+								});					
+							},
+														
+							"Отмена": function() {	
+								$( this ).dialog( "close" );
+							}
+						},
+						open: function() {                
+						},
+						close: function() {										
+						}
+					});
+				});
+			
 		});
 				
 		$("div#tabs-settings").delegate("button.save_settings", "click", function(){

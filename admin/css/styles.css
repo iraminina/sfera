@@ -230,14 +230,14 @@ table.visibility-table tr th, table.visibility-table tr td {
 }
 
 table.visibility-table th {	
-	width: 63px;
+	width: 75px;
 	font-weight: normal;	
 }
 
 table.visibility-table th div {
-	margin: 2px 0;
+	margin: 2px;
 	word-wrap: break-word;
-	width: 63px;
+	width: 75px;
 	font-size: 11px;
 }
 
