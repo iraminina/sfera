@@ -52,6 +52,7 @@ switch($_REQUEST['action']) {
 	case 'save_menu':	
         $data = array(	'menu_name' => $_REQUEST['menu_name'],
 						'menu_image' => $_REQUEST['menu_image'],
+						'menu_clients_logo' => $_REQUEST['menu_clients_logo'],						
 						'menu_order' => $_REQUEST['menu_order'],
 						'menu_parent_id' => $_REQUEST['menu_parent_id'],
 						'menu_page_id' => $_REQUEST['menu_page_id'],

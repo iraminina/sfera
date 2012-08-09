@@ -57,12 +57,13 @@ class common {
 		if(mysql_num_rows($res)>0)  return array('result' => false, 'error' => 'NOT_UNIQUE_MENU');
 		
 		if(intval($params['menu_id'])==0)
-			$query = "INSERT INTO menu(`name`, `image`, `order`, `parent_id`, `page_id`, `menu_category_id`) 
-					  VALUES('{$params['menu_name']}', '{$params['menu_image']}', {$params['menu_order']}, {$params['menu_parent_id']}, {$params['menu_page_id']}, {$params['menu_category_id']})";
+			$query = "INSERT INTO menu(`name`, `image`, `clients_logo`, `order`, `parent_id`, `page_id`, `menu_category_id`) 
+					  VALUES('{$params['menu_name']}', '{$params['menu_image']}', '{$params['menu_clients_logo']}', {$params['menu_order']}, {$params['menu_parent_id']}, {$params['menu_page_id']}, {$params['menu_category_id']})";
 		else
 			$query = "UPDATE menu
 					  SET `name`='{$params['menu_name']}',
 						`image`='{$params['menu_image']}',
+						`clients_logo`='{$params['menu_clients_logo']}',
 						`order`={$params['menu_order']}, 
 						`parent_id`={$params['menu_parent_id']},
 						`page_id`={$params['menu_page_id']},
@@ -190,14 +191,20 @@ class common {
 	
 	##### Other #####
 	public function getCategoriesImages() {
-		$files = array();
+		$categories = $clients = array();
 		if ($handle = opendir(realpath('../images/categories'))) {
 			while (false !== ($entry = readdir($handle))) {
-				if(!in_array($entry, array('.', '..'))) $files[] = $entry;
+				if(!in_array($entry, array('.', '..'))) $categories[] = $entry;
 			}
 			closedir($handle);
 		}
-		return $files;
+		if ($handle = opendir(realpath('../images/clients'))) {
+			while (false !== ($entry = readdir($handle))) {
+				if(!in_array($entry, array('.', '..'))) $clients[] = $entry;
+			}
+			closedir($handle);
+		}
+		return array('categories' => $categories, 'clients' => $clients );
 	}
 	
 	public function convertString($string)	{

@@ -4,6 +4,7 @@
 	emailsData: null,
 	menuData: null,
 	categoriesImagesData: null,
+	clientsImagesData: null,
 	
 	init: function() {
 		$.datepicker.setDefaults({
@@ -39,7 +40,8 @@
 	
 	initCategoriesImagesData: function() {
 		$.getJSON('ajax.php?action=get_categories_images', function(data) {
-			$.sfera_admin.categoriesImagesData = data;			
+			$.sfera_admin.categoriesImagesData = data.categories;			
+			$.sfera_admin.clientsImagesData = data.clients;			
 		});
 	},
 			
@@ -167,7 +169,7 @@
 	setupMenuDialodWindow: function() {
 		$( "div#edit_menu" ).dialog({
 			autoOpen: false,
-            height: 260,
+            height: 280,
 			width: 480,
 			modal: true,
             title: "Редактировать пункт меню",			
@@ -180,6 +182,7 @@
 					  data: {	menu_id: escape($("#menu_id").val()),
 								menu_name: escape($("#menu_name").val()),
 								menu_image: escape($("#image").val()),
+								menu_clients_logo: escape($("#clients").val()),
 								menu_order: escape($("#menu_order").val()),
 								menu_parent_id: escape($("#menu_parent_id").val()),
 								menu_page_id: escape($("#menu_page_id").val()),
@@ -333,11 +336,13 @@
 			var pages_select = $.sfera_admin.getEditMenuPagesSelect();			
 			var parents_select = $.sfera_admin.getEditMenuParentsSelect();
 			var images_select = $.sfera_admin.getEditMenuImagesSelect();
-			
+			var clients_select = $.sfera_admin.getEditMenuClientsSelect();
+						
 			$("p#menu_success, p#menu_error").html('');			
 			$("#menu_page_id").html(pages_select).val(0);			
 			$("#menu_parent_id").html(parents_select).val(0);			
 			$("#image").html(images_select).val('');
+			$("#clients").html(clients_select).val('');
 			$("#menu_id, #menu_order, #menu_category_id").val(0);
 			$("#menu_name").val('');
 			$("#edit_page_link").hide();			
@@ -351,6 +356,7 @@
 			var pages_select = $.sfera_admin.getEditMenuPagesSelect();
 			var parents_select = $.sfera_admin.getEditMenuParentsSelect();			
 			var images_select = $.sfera_admin.getEditMenuImagesSelect();
+			var clients_select = $.sfera_admin.getEditMenuClientsSelect();
 			
 			//find menu data
 			var menu_data = null;
@@ -372,11 +378,12 @@
 			$("#menu_page_id").html(pages_select).val(unescape(menu_data.page_id));
 			$("#menu_parent_id").html(parents_select).val(unescape(menu_data.parent_id));			
 			$("#image").html(images_select).val(unescape(menu_data.image));
+			$("#clients").html(clients_select).val(unescape(menu_data.clients_image));
 			$("#menu_id").val(unescape(menu_data.id));
 			$("#menu_order").val(unescape(menu_data.order));
 			$("#menu_category_id").val(unescape(menu_data.menu_category_id));		
 			$("#menu_name").val(unescape(menu_data.name));
-			$("#image").change();
+			$("#image, #clients").change();
 			$("#edit_page_link").attr("rel", menu_data.page_id).show();			
 			if(menu_data.page_id==0) $("#edit_page_link").hide();
 			$( "div#edit_menu" ).dialog( "open" );
@@ -498,6 +505,15 @@
 		var images_select = '';
 		images_select += '<option value="">Нет</option>';
 		$.each($.sfera_admin.categoriesImagesData, function(key, image) {
+			images_select += '<option value="' + image + '">' + image + '</option>';
+		});
+		return images_select;
+	},
+	
+	getEditMenuClientsSelect: function() {	
+		var images_select = '';
+		images_select += '<option value="">Нет</option>';
+		$.each($.sfera_admin.clientsImagesData, function(key, image) {
 			images_select += '<option value="' + image + '">' + image + '</option>';
 		});
 		return images_select;

@@ -33,7 +33,7 @@ class page {
 
 	public function getPageByURL($page_url) {
 		global $con;
-		$query = "SELECT page.*, menu.id menu_id, menu.menu_category_id
+		$query = "SELECT page.*, menu.id menu_id, menu.menu_category_id, menu.clients_logo
 				  FROM page LEFT JOIN menu ON menu.page_id=page.id 
 				  WHERE url='{$page_url}'";
 		$res = mysql_query($query, $con);

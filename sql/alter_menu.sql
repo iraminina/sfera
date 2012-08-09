@@ -1,0 +1,1 @@
+ALTER TABLE `menu` ADD COLUMN `clients_logo` varchar(250) NOT NULL;
