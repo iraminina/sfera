@@ -38,7 +38,8 @@
 		<br/><img src="../images/clear.gif" height="20" width="1" />
 	</div>
 	<div class="separator fleft"><img src="../images/clear.gif" height="500" width="5" /></div>
-	<div class="col_middle fleft">	
+	<div class="col_middle fleft">
+		<h1><?php echo $objCommon->convertString($page->title) ?></h1>
 		<?php
 			switch($content) { 
 				case '[ALL_NEWS]':

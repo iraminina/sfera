@@ -19,6 +19,7 @@ switch($page_name) {
 if($content == '') $content = '&nbsp;';
 
 $title = $page ? $objCommon->convertString($page->title) : $config['general_title'];
+$title = strip_tags(str_replace('.', '', $title));
 $keywords = $page ? $objCommon->convertString($page->meta_keywords) : '';
 $description = $page ? $objCommon->convertString($page->meta_description) : '';
 $menu = $objCommon->getMenu();
